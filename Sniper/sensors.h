@@ -24,6 +24,12 @@ const uint8_t pin_micro_2 = 10;
 const uint8_t pin_hall = A5;
 volatile int hall_value = 0;
 
+int Speed = confiance;
+long t0;
+int cmdL = 0;
+int cmdR = 0;
+int state = 0;
+
 //
 // // Filter for analog sharp (TODO)
 // extern int tab_G_sharp[FILTER_SHARP_TAB_SIZE];
@@ -123,10 +129,73 @@ void check_hall_sensor() {
 
 }
 
+void Algo()
+{
+  Speed = confiance;
+  if(Sharp.left||Sharp.middle||Sharp.right){
+    Speed = Speed/2;
+  }
+  switch(state){
+    case 0:
+      cmdL = Speed;
+      cmdR = Speed;
+      if(Bumper.left||hall_detect){
+        t0=millis();
+        state = 1;
+      }
+      if(Bumper.right||hall_detect){
+        t0=millis();
+        state = 3;
+      }
+      if(Sharp.left){
+        t0=millis();
+        state = 4;
+      }
+      if(Sharp.right){
+        t0=millis();
+        state = 2;
+      }
+      break;
+    case 1:
+      cmdL = -Speed;
+      cmdR = -Speed;
+      if((millis()-t0)>(100000/Speed)){
+        t0=millis();
+        state = 2;
+      }
+      break;
+    case 2:
+      cmdL = -Speed;
+      cmdR = Speed;
+      if((millis()-t0)>(25000/Speed)){
+        state = 0;
+      }
+      break;
+    case 3:
+      cmdL = -Speed;
+      cmdR = -Speed;
+      if((millis()-t0)>(100000/Speed)){
+        t0=millis();
+        state = 4;
+      }
+      break;
+    case 4:
+      cmdL = Speed;
+      cmdR = -Speed;
+      if((millis()-t0)>(50000/Speed)){
+        state = 0;
+      }
+      break;
+  }
+  set_right_motor_speed(cmdR);
+  set_left_motor_speed(cmdL);
+}
+
 // Generic IR detection function
 void check_sensors() {
 
   check_hall_sensor();
+  Algo();
 
   #ifdef SHARP_ANALOG
     check_analog_sharp();
@@ -176,55 +245,5 @@ void update_array(int new_value, int *array,int *current) {
   array[*current]=new_value;
   *current = (*current+1)%SIZE_ARRAY_SHARP;
 }
-
-
-
- void Algo()
- {
-
-
-  //distance = ;
-
-   //if(distance > 30) return 31;
-   //else if(distance < 4) return 3;
-  //else return distance;
-   int i;
-   int left_sensor = 0;
-   int right_sensor = 0;
-   int middle_sensor = 0;
-
-   for (i = 0; i < 5; i++)
-     left_sensor += analogRead(pin_G_sharp);
-   for (i = 0; i < 5; i++)
-     right_sensor += analogRead(pin_D_sharp);
-   for (i = 0; i < 5; i++)
-     middle_sensor += analogRead(pin_M_sharp);
-
-   left_sensor = left_sensor / 5;
-   right_sensor = right_sensor / 5;
-   middle_sensor = middle_sensor / 5;
-
-   if (left_sensor < CONF_SENSOR && right_sensor < CONF_SENSOR && middle_sensor < CONF_SENSOR) {
-     // avant();
-     delay(100);
-   }
-   else if (left_sensor >= CONF_SENSOR && right_sensor < CONF_SENSOR) {
-     // arret_droite();
-     delay(100);
-   }
-   else if (right_sensor >= CONF_SENSOR && left_sensor < CONF_SENSOR) {
-     // arret_gauche();
-     delay(100);
-   }
-   else
-   {
-     // arret();
-     // arriere();
-     // delay(100);
-     // tour();
-     // delay(500);
-   }
- }
-
 
 /*******************INTERRUPTION*******************/
