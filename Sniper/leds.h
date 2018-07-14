@@ -141,7 +141,7 @@ void init_neo_pixel() {
   FastLED.setBrightness(MAX_BRIGHTNESS);
   fill_solid(neo_leds, NUM_LEDS, CRGB::Red);
 
-  timerNeoLeds.begin(breathe_ISR, 100000);
+  timerNeoLeds.begin(sunrise, 100000);
   timerNeoLeds.priority(250);
   // full_leds_RGB(60, 30, 40);
 }
