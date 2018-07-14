@@ -1,10 +1,20 @@
-# Sniper, Guerilla, Shark, Razor et les autres
-Cette pièce de Emmanuelle Grangier de la compagnie P.A.S. met en scène une dizaine de petits robots mobiles ronds. Ce dépôt regroupe les codes et les différentes procédures afin de lancer les robots ou les refaire.
+Sniper, Guerilla, Shark, Razor et les autres
+============================================
 
-## L'architecture
+Cette pièce de Emmanuelle Grangier de la compagnie P.A.S. met en scène une
+dizaine de petits robots mobiles ronds. Ce dépôt regroupe les codes et les
+différentes procédures afin de lancer les robots ou les refaire.
 
-## Le code embarqué dans les robots
+Cela fonctionne.
 
-## Le code embarqué dans les ESP8266
+L'architecture
+--------------
 
-## Le code de contrôle global
+Le code embarqué dans les robots
+--------------------------------
+
+Le code embarqué dans les ESP8266
+---------------------------------
+
+Le code de contrôle global
+--------------------------
