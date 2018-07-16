@@ -17,6 +17,7 @@ CRGB neo_leds[NUM_LEDS];
 
 volatile int fading_percentage = 50;
 volatile bool up = true ;
+float theta = 0.0;
 
 IntervalTimer timerNeoLeds;
 
@@ -60,6 +61,39 @@ void _breathe(uint8_t min_bright, uint8_t max_bright, float frequency_factor) {
 void breathe_ISR() {
   // _breathe(0, 150, 0.02);
   _breathe(0, 150, 15);
+}
+
+void heart(){
+  int red = 0;
+  int green = 0;
+  int blue = 0;
+  if(order==0){
+    red = 0;// hold
+    green = 0;
+    blue = 255;
+  }
+  if(order==1){
+    red = 255;// sell
+    green = 255;
+    blue = 0;
+  }
+  if(order==2){
+    red = 0;// buy
+    green = 255;
+    blue = 255;
+  }
+  uint8_t random_led = random(0, NUM_LEDS);
+  for (int i = 0; i < NUM_LEDS; i++) {
+    neo_leds[i] = CRGB(red, green, blue);
+  }
+  if(Sharp.left||Sharp.middle||Sharp.right||Bumper.left||hall_detect||Bumper.right){
+    neo_leds[random_led] = CRGB(255, 255, 255);
+  }
+  // brightness
+  theta = theta+omega*0.01;
+  float breath = 255*(sin(theta)+0.5);
+  FastLED.setBrightness(map(breath, 0, 255, 55, 150));
+  FastLED.show();
 }
 
 void chenillard() {
@@ -141,7 +175,7 @@ void init_neo_pixel() {
   FastLED.setBrightness(MAX_BRIGHTNESS);
   fill_solid(neo_leds, NUM_LEDS, CRGB::Red);
 
-  timerNeoLeds.begin(sunrise, 100000);
+  timerNeoLeds.begin(heart, 10000);
   timerNeoLeds.priority(250);
   // full_leds_RGB(60, 30, 40);
 }

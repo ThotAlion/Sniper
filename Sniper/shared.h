@@ -7,6 +7,8 @@
 #include <Arduino.h>
 #include <ArduinoLog.h>
 #include <TimerOne.h>
+// Numero du robot
+const int NRobot = 2;
 
 // Comment to use digital or or uncomment to use analog sharp
 //#define SHARP_ANALOG
@@ -54,6 +56,8 @@ extern struct sharp_detect Sharp = {false, false, false} ;
 extern struct bumper Bumper = {false, false};
 extern bool hall_detect = false;
 extern int confiance = 0;
+extern float omega = 1;
+extern int order = 0; // 0:hold, 1:sell 2: buy
 
 // Pas possible de faire un struct de struct sans passer par des pointeurs
 // extern struct all_sensors Sensors = {Sharp, Bumper, false } ;
