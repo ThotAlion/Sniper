@@ -19,7 +19,7 @@ WiFiUDP Udp;
 int localPort = 8888;
 
 IPAddress outIp(192, 168, 10, 159); //default IP, will change with received udp
-IPAddress espip(192, 168, 10, 12);
+IPAddress espip(192, 168, 10, 22);
 IPAddress gateway(192, 168, 10, 233);
 IPAddress subnet(255, 255, 255, 0);
 

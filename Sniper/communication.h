@@ -11,12 +11,6 @@ OSCErrorCode error;
 SLIPEncodedSerial SLIPSerial(Serial1);
 
 void init_com() {
-  char msgSellup[] =    "/ROBOT_XX/SELL_UP";
-  char msgSelldown[] =  "/ROBOT_XX/SELL_DOWN";
-  char msgHoldup[] =    "/ROBOT_XX/HOLD_UP";
-  char msgHolddown[] =  "/ROBOT_XX/HOLD_DOWN";
-  char msgBuyup[] =     "/ROBOT_XX/BUY_UP";
-  char msgBuydown[] =   "/ROBOT_XX/BUY_DOWN";
   SLIPSerial.begin(115200);  //Com série avec l'ESP8266-01 (115200 si neo_to_black et 9600 si bleu)
   
 }
@@ -107,13 +101,13 @@ void OSCMsgReceive()
         bundle.fill(SLIPSerial.read());
       }
       if (!bundle.hasError()) {
-        bundle.dispatch("/ROBOT_XX/CONF", ValueConfiance);
-        bundle.dispatch("/ROBOT_XX/SELL_DOWN", ValueSellDown);
-        bundle.dispatch("/ROBOT_XX/SELL_UP", ValueSellUp);
-        bundle.dispatch("/ROBOT_XX/BUY_DOWN", ValueBuyDown);
-        bundle.dispatch("/ROBOT_XX/BUY_UP", ValueBuyUp);
-        bundle.dispatch("/ROBOT_XX/HOLD_DOWN", ValueHoldDown);
-        bundle.dispatch("/ROBOT_XX/HOLD_UP", ValueHoldUp);
+        bundle.dispatch("/ROBOT_2/CONF", ValueConfiance);
+        bundle.dispatch("/ROBOT_2/SELL_DOWN", ValueSellDown);
+        bundle.dispatch("/ROBOT_2/SELL_UP", ValueSellUp);
+        bundle.dispatch("/ROBOT_2/BUY_DOWN", ValueBuyDown);
+        bundle.dispatch("/ROBOT_2/BUY_UP", ValueBuyUp);
+        bundle.dispatch("/ROBOT_2/HOLD_DOWN", ValueHoldDown);
+        bundle.dispatch("/ROBOT_2/HOLD_UP", ValueHoldUp);
       } else {
         error = bundle.getError();
       }
