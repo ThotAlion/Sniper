@@ -14,7 +14,7 @@ différentes procédures afin de lancer les robots ou les refaire.
 - Préparer le logiciel PureData de contrôle
 - Insérer deux batteries par robot à l'arrière et les connecter aux petits connecteurs qui sortent du robot. Il n'y a pas besoin d'ouvrir le robot pour les brancher
 - Allumer les deux interrupteurs du dessus et attendre quelques secondes que l'anneau de LED s'allume en bleu clignotant lent.
-![Branchement](https://github.com/ThotAlion/Sniper/blob/master/IMG_20180719_160841.jpg?raw=true | width=100)
+![Branchement](https://github.com/ThotAlion/Sniper/blob/master/IMG_20180719_160841.jpg?raw=true&s=100)
 - Votre robot est prêt à recevoir les ordres boursiers. En considerant le robot 5 on a
 - /ROBOT_5/CONF $i qui commande une vitesse (ne pas dépasser 150)
 - /ROBOT_5/SELL_UP $i LED allumée jaune et augmente le rythme
