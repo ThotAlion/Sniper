@@ -5,7 +5,7 @@ Cette pièce de Emmanuelle Grangier de la compagnie P.A.S. met en scène une
 dizaine de petits robots mobiles ronds. Ce dépôt regroupe les codes et les
 différentes procédures afin de lancer les robots ou les refaire.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/KFx6Ewun1QE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+[![Sniper](http://img.youtube.com/vi/KFx6Ewun1QE/0.jpg)](https://www.youtube.com/embed/KFx6Ewun1QE)
 
 # procédure de lancement des robots
 
