@@ -15,7 +15,7 @@ différentes procédures afin de lancer les robots ou les refaire.
 - Insérer deux batteries par robot à l'arrière et les connecter aux petits connecteurs qui sortent du robot. Il n'y a pas besoin d'ouvrir le robot pour les brancher
 - Allumer les deux interrupteurs du dessus et attendre quelques secondes que l'anneau de LED s'allume en bleu clignotant lent.
 <p align="center">
-  <img width="460" height="300" src="https://github.com/ThotAlion/Sniper/blob/master/IMG_20180719_160841.jpg">
+  <img height="300" src="https://github.com/ThotAlion/Sniper/blob/master/IMG_20180719_160841.jpg">
 </p>
 - Votre robot est prêt à recevoir les ordres boursiers. En considerant le robot 5 on a
 - /ROBOT_5/CONF $i qui commande une vitesse (ne pas dépasser 150)
