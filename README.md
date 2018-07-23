@@ -15,7 +15,7 @@ différentes procédures afin de lancer les robots ou les refaire.
 - Insérer deux batteries par robot à l'arrière et les connecter aux petits connecteurs qui sortent du robot. Il n'y a pas besoin d'ouvrir le robot pour les brancher
 - Allumer les deux interrupteurs du dessus et attendre quelques secondes que l'anneau de LED s'allume en bleu clignotant lent.
 <p align="center">
-  <img height="300" src="https://github.com/ThotAlion/Sniper/blob/master/IMG_20180719_160841.jpg">
+  <img height="300" src="https://github.com/ThotAlion/Sniper/blob/master/branchement.jpg">
 </p>
 - Votre robot est prêt à recevoir les ordres boursiers. En considerant le robot 5 on a
 - /ROBOT_5/CONF $i qui commande une vitesse (ne pas dépasser 150)
@@ -37,11 +37,13 @@ Les batteries utilisées sont la mise en série de deux cellules LiPo. Une cellu
 Une cellule complètement chargée a une tension de 4.2V. Si la tension de la cellule passe en dessous de 3.3V, la laisser reposer une nuit dans l'espoir qu'elle remonte. Si la tension passe en dessous de 3V, la cellule est perdue.
 Dans le kit, une boite en carton (contenant par ailleurs la bande magnétique) permettra d'entreposer les batteries utilisées afin de les recharger. Dans cette boite est aussi entreposé le testeur de batteries à brancher comme sur la photo.
 <p align="center">
-  <img height="300" src="https://github.com/ThotAlion/Sniper/blob/master/IMG_20180719_163603.jpg">
+  <img height="300" src="https://github.com/ThotAlion/Sniper/blob/master/test_batteries.jpg">
 </p>
 
 # L'architecture
-
+<p align="center">
+  <img height="300" src="https://github.com/ThotAlion/Sniper/blob/master/archi.png">
+</p>
 
 # Le code embarqué dans les robots
 
