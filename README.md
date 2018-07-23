@@ -45,8 +45,25 @@ Dans le kit, une boite en carton (contenant par ailleurs la bande magnétique) p
   <img height="300" src="https://github.com/ThotAlion/Sniper/blob/master/archi.png">
 </p>
 
-# Le code embarqué dans les robots
+Chaque robot est autonome. A partir de ses capteurs, il va piloter ses deux moteurs et les composantes de son bandeau LED. Il possède d'abord en bas deux bumpers qui détectent la présence d'un obstacle direct, à gauche ou à droite. Sa réaction sera de faire immédiatement marche arrière pour se dégager de l'obstacle et faire un demi-tour pour repartir.
+Il possède aussi une sonde à effet Hall dessous pour détecter une bande magnétique cachée sous le tapis de danse. Sa réaction sera équivalente au contact bumper.
+Ensuite, il possède trois télémètres infrarouges à l'avant qui s'enclenchent à quelques centimètres du robot. La réaction sera de faire un quart de tour dans la direction opposée au télémètre qui a détecté l'obstacle. La vitesse du robot est aussi divisée par deux.
+Pour chaque réaction capteur, l'anneau LED réagit avec l'activation aléatoire d'une LED en blanc.
+Enfin, le dernier "capteur" est le module ESP8266 qui va recevoir des messages OSC sur l'adresse broadcast (192.168.10.255)
+Le message OSC /ROBOT_1/CONF $i force la valeur de la vitesse nominale du robot
+Les messages OSC /ROBOT_1/BUY|SELL|HOLD_UP|DOWN $i va influer sur l'anneau LED.
+l'anneau LED est basé sur un modèle de battement:
+puissance = sin(theta) 
+avec theta = theta+omega*dt
+La valeur du message va modifier la consigne omega avec un gain fort (la dispersion des valeurs d'ordre boursier étant faibles). Le type de message va juste déterminer la couleur. Ici BUY = BLANC, HOLD = BLEU et SELL = JAUNE.
 
+Pour information, le robot possède des encodeurs magnétiques en quadrature qui permettraient l'asservissement en vitesse de chaque moteur. Cependant, ces codeurs ne sont pas câblés sur les broches à interruption, et le nombre de pas par tour de roues est très important.
+
+Tout ceci est codé dans le robot via l'interface Arduino dans le fichier Sensor.h et dans la routine Algo(). Cette routine fait tourner un automate à état fini.
+
+<p align="center">
+  <img height="300" src="https://github.com/ThotAlion/Sniper/blob/master/Machine_etat.png">
+</p>
 
 # Le code embarqué dans les ESP8266
 
