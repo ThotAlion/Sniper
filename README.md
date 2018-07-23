@@ -66,6 +66,16 @@ Tout ceci est codé dans le robot via l'interface Arduino dans le fichier Sensor
 </p>
 
 # Le code embarqué dans les ESP8266
+Le code de base dans les ESP8266 (commande AT) n'est pas suffisant pour transférer des trames OSC. Pour faire cela, il faut programmer l'ESP8266 avec le programme dans ce repo (OSC_bridge). L'ESP8266 peut se programmer via l'interface de programmation Arduino. Il faut que l'interface soit modifiée pour être compatible ESP. Ce lien explique comment faire : [Programmer un ESP8266](https://www.fais-le-toi-meme.fr/fr/electronique/tutoriel/programmes-arduino-executes-sur-esp8266-arduino-ide). Attention, dans ce lien, le montage final est trop complexe et faux (les RX et TX ne sont pas inversés...)
+Il faut avoir un matériel minimum pour programmer ces puces et notamment un câble de conversion [FTDI de USB vers RS232 en 3.3V (Attention, pas le 5V](https://shop.clickandbuild.com/cnb/shop/ftdichip?productID=97&op=catalogue-product_info-null&prodCategoryID=293)
+Pour placer l'ESP8266 en mode programmation, il faut faire le montage suivant :
+
+- VCC ESP8266 -> 3.3V FTDI
+- GND ESP8266 -> GND FTDI
+- RX ESP8266 -> TX FTDI
+- TX ESP8266 -> RX FTDI
+- GPIO0 ESP8266 -> GND FTDI
+- CH_PD ESP8266 -> 3.3V FTDI
 
 
 # Le code de contrôle global
