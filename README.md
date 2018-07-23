@@ -59,8 +59,7 @@ robot cannibalisé. Hors service.
 ## Numéro 2 (Analogique)
 robot au comportement nominal.
 ## Numéro 3 (Analogique)
-capteurs IR de droite et du milieu sont morts. Les bumpers et la sonde effet hall sont opérationnels. Impression de murs fantomes.
-robot au comportement nominal.
+capteurs IR de droite et du milieu sont morts. Les bumpers et la sonde effet hall sont opérationnels. Impression de murs fantomes. Le robot a un comportement maladroit mais opérationnel.
 ## Numéro 4 (Digital)
 robot au comportement nominal.
 ## Numéro 5 (Digital)
