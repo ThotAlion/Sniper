@@ -8,10 +8,10 @@
 #include <ArduinoLog.h>
 #include <TimerOne.h>
 // Numero du robot
-const int NRobot = 2;
+const int NRobot = 3;
 
 // Comment to use digital or or uncomment to use analog sharp
-#define SHARP_ANALOG
+//#define SHARP_ANALOG
 
 // timer en milliseconds de vérif du sharp analogique et de l'effet hall
 #define SENSOR_TIMER_MILLISECONDS 300

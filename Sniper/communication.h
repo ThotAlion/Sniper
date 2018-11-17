@@ -101,13 +101,13 @@ void OSCMsgReceive()
         bundle.fill(SLIPSerial.read());
       }
       if (!bundle.hasError()) {
-        bundle.dispatch("/ROBOT_2/CONF", ValueConfiance);
-        bundle.dispatch("/ROBOT_2/SELL_DOWN", ValueSellDown);
-        bundle.dispatch("/ROBOT_2/SELL_UP", ValueSellUp);
-        bundle.dispatch("/ROBOT_2/BUY_DOWN", ValueBuyDown);
-        bundle.dispatch("/ROBOT_2/BUY_UP", ValueBuyUp);
-        bundle.dispatch("/ROBOT_2/HOLD_DOWN", ValueHoldDown);
-        bundle.dispatch("/ROBOT_2/HOLD_UP", ValueHoldUp);
+        bundle.dispatch("/ROBOT_9/CONF", ValueConfiance);
+        bundle.dispatch("/ROBOT_9/SELL_DOWN", ValueSellDown);
+        bundle.dispatch("/ROBOT_9/SELL_UP", ValueSellUp);
+        bundle.dispatch("/ROBOT_9/BUY_DOWN", ValueBuyDown);
+        bundle.dispatch("/ROBOT_9/BUY_UP", ValueBuyUp);
+        bundle.dispatch("/ROBOT_9/HOLD_DOWN", ValueHoldDown);
+        bundle.dispatch("/ROBOT_9/HOLD_UP", ValueHoldUp);
       } else {
         error = bundle.getError();
       }
