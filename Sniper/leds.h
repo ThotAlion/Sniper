@@ -82,6 +82,11 @@ void heart(){
     green = 255;
     blue = 255;
   }
+  if(confiance==0){
+    red = 0;// off
+    green = 0;
+    blue = 0;
+  }
   uint8_t random_led = random(0, NUM_LEDS);
   for (int i = 0; i < NUM_LEDS; i++) {
     neo_leds[i] = CRGB(red, green, blue);
