@@ -31,6 +31,18 @@ Si le robot ne fonctionne pas :
 - Eteindre et rallumer juste la partie puissance (interrupteur PUISS)
 - Vérifier la tension de la batterie
 
+# Configuration du réseau Wifi
+
+- SSID : sniperAProbot
+- password : razorshark
+- adresse IP du routeur : 192.168.10.233
+- login du routeur : admin
+- password du routeur : admin
+- adresse IP broadcast : 192.168.10.255
+- numéro du port OSC : 8888
+
+Cette configuration est en lien avec la programmation de l'ESP8266 (dans le dossier OSC_bridge_ESP8266)
+
 # IMPORTANT : LES BATTERIES
 Le robot ne possède pas de protection contre la décharge de batterie. Si jamais la batterie se décharge trop, la batterie meurt et ne peut plus être chargée. Cela peut être onéreux (surtout sur 24 batteries).
 Les batteries utilisées sont la mise en série de deux cellules LiPo. Une cellule a une tension de 3.7V. Cela fait donc 7.4V au total.
