@@ -1,0 +1,42 @@
+#N canvas 584 97 455 379 10;
+#X obj 203 108 textfile;
+#X obj 155 209 mrpeach/udpsend 8888;
+#X obj 157 -27 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 203 26 i \$1;
+#X msg 203 74 read ip/robot_\$1.txt;
+#X msg 142 74 rewind;
+#X msg 100 74 bang;
+#X obj 157 -4 t b b b;
+#X msg 203 163 connect \$1 8888;
+#X obj 153 250 outlet;
+#X obj 229 254 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 203 139 symbol;
+#X obj 25 73 inlet;
+#X obj 156 -96 inlet;
+#X obj 156 -66 sel 1 0;
+#X msg 301 -11 disconnect;
+#X obj 208 -95 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 42 149 mrpeach/packOSC;
+#X connect 0 0 11 0;
+#X connect 1 0 9 0;
+#X connect 1 0 10 0;
+#X connect 2 0 7 0;
+#X connect 3 0 4 0;
+#X connect 4 0 0 0;
+#X connect 5 0 0 0;
+#X connect 6 0 0 0;
+#X connect 7 0 6 0;
+#X connect 7 1 5 0;
+#X connect 7 2 3 0;
+#X connect 8 0 1 0;
+#X connect 11 0 8 0;
+#X connect 12 0 17 0;
+#X connect 13 0 14 0;
+#X connect 14 0 2 0;
+#X connect 14 1 15 0;
+#X connect 15 0 1 0;
+#X connect 16 0 14 0;
+#X connect 17 0 1 0;

@@ -1,0 +1,147 @@
+#N canvas 260 140 1106 633 10;
+#X obj 13 384 cnv 15 296 90 empty empty GLOBAL\ ROBOT 101 6 0 14 -162215
+-262144 0;
+#N canvas 244 52 1023 513 osc-communication 0;
+#X obj 300 100 cnv 15 299 81 empty empty COMMUNICATION 98 14 0 14 -203904
+-66577 0;
+#X obj 344 139 tgl 20 0 empty empty TENS 24 10 0 10 -4034 -1 -1 0 1
+;
+#X obj 503 139 tgl 20 0 nos empty ROBOT 24 10 0 10 -4034 -1 -1 0 1
+;
+#X text 299 46 IP broadcast sur le TPLink : 192.168.10.255;
+#X text 298 23 IP multicast sur le petit routeur pas cher : 239.0.0.56
+;
+#X obj 214 196 s tensConnect;
+#X obj 654 188 s robotConnect;
+#X connect 1 0 5 0;
+#X connect 2 0 6 0;
+#X coords 0 -1 1 1 300 82 2 300 100;
+#X restore 11 105 pd osc-communication;
+#X obj 11 40 cnv 15 300 60 empty empty SNIPPER 20 20 0 22 -233017 -66577
+0;
+#X text 33 74 version 0.33;
+#X obj 317 41 tradebot AAPL 1000;
+#X obj 316 250 tens AAPL A;
+#X obj 512 41 TRADEBOT FB 1000;
+#X obj 512 250 tens FB B;
+#X obj 707 41 TRADEBOT HSBC 1000;
+#X obj 707 250 tens HSBC C;
+#X obj 901 41 TRADEBOT GLD 1000;
+#X obj 901 250 tens GLD D;
+#X obj 126 408 bng 54 250 50 0 robotPanic empty PANIC 12 58 0 10 -258049
+-1 -1;
+#X obj 46 408 bng 54 250 50 0 robotSortie empty SORTIE 10 56 0 10 -262144
+-1 -1;
+#X obj 12 193 cnv 15 296 90 empty empty GLOBAL\ TRADEBOT 80 6 0 14
+-74899 -245500 0;
+#X obj 317 508 robot AAPL 5;
+#X obj 512 385 robot FB 3;
+#X obj 511 510 robot FB 4;
+#X obj 903 386 robot GLD 9;
+#X obj 316 384 robot AAPL 7;
+#X obj 708 386 robot HSBC 8;
+#X obj 13 289 cnv 15 296 90 empty empty GLOBAL\ TENS 102 5 0 14 -116509
+-257983 0;
+#N canvas 73 143 315 327 emergency 0;
+#X obj 100 100 bng 70 250 50 0 empty empty STOP 10 35 0 20 -258113
+-257985 -262144;
+#X msg 100 187 0;
+#X obj 100 209 s stopTradebot;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X coords 0 -1 1 1 70 70 2 100 100;
+#X restore 71 212 pd emergency;
+#N canvas 580 253 315 327 reset 0;
+#X obj 100 100 bng 70 250 50 0 empty empty reset 10 35 0 16 -232576
+-257985 -45076;
+#X msg 100 187 0;
+#X obj 100 209 s reset;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X coords 0 -1 1 1 70 70 1 100 100;
+#X restore 215 211 pd reset;
+#X obj 42 312 bng 54 250 50 0 tensPanic empty PANIC 14 60 0 10 -258049
+-1 -1;
+#N canvas 261 72 412 642 full_then_preset 0;
+#X obj 111 303 s TENS_FULL;
+#X obj 100 200 cnv 15 87 58 empty empty TEST_FULL 5 12 0 14 -233017
+-66577 0;
+#X obj 110 223 tgl 30 0 empty reset empty 17 7 0 10 -4034 -1 -1 0 1
+;
+#X connect 2 0 0 0;
+#X coords 0 -1 1 1 87 59 2 100 200;
+#X restore 117 310 pd full_then_preset;
+#N canvas 467 371 450 300 logs_files 0;
+#X obj 167 161 outlet;
+#X obj 119 161 outlet;
+#X obj 265 161 outlet;
+#X obj 217 161 outlet;
+#X msg 119 51 logs/AAPL_5_DAY2016_09_20.txt;
+#X obj 119 71 symbol;
+#X obj 167 94 symbol;
+#X obj 217 114 symbol;
+#X obj 265 140 symbol;
+#X msg 167 74 logs/FB_3_DAY2016_09_20.txt;
+#X msg 217 94 logs/HSBC_5_DAY2016_09_20.txt;
+#X msg 265 120 logs/GLD_5_DAY2016_09_20.txt;
+#X obj 264 5 loadbang;
+#X connect 4 0 5 0;
+#X connect 5 0 1 0;
+#X connect 6 0 0 0;
+#X connect 7 0 3 0;
+#X connect 8 0 2 0;
+#X connect 9 0 6 0;
+#X connect 10 0 7 0;
+#X connect 11 0 8 0;
+#X connect 12 0 4 0;
+#X connect 12 0 9 0;
+#X connect 12 0 10 0;
+#X connect 12 0 11 0;
+#X restore 629 -1 pd logs_files;
+#X text 396 15 GREG;
+#X text 573 16 MARIO;
+#X text 761 15 STAN;
+#X text 964 15 DAPHNE;
+#X obj 226 402 tgl 54 0 robot_fromTradebot empty from\ Tradebot -7
+62 0 10 -262144 -1 -1 0 1;
+#X obj 226 301 tgl 54 0 tens_fromTradebot empty from\ Tradebot -7 62
+0 10 -262144 -1 -1 0 1;
+#N canvas 351 218 766 465 README 0;
+#X obj 8 30 cnv 15 359 203 empty empty NOTES 20 12 0 14 -233017 -66577
+0;
+#X obj 9 238 cnv 15 360 194 empty empty UTILISATION 20 12 0 14 -233017
+-66577 0;
+#X obj 375 31 cnv 15 347 158 empty empty class\ tradebot 20 12 0 14
+-233017 -66577 0;
+#X text 16 56 Envoi osc sur Tens & Robot;
+#X text 16 84 Depuis des fichiers logs;
+#X text 16 109 Plus de broadcast \, ni multicast;
+#X text 16 134 Les ip sont fixées;
+#X text 16 157 Les esp des robots demandent leur IP;
+#X text 16 180 les esp des tens sont fixés par le routeur;
+#X text 20 208 les ip sont écrites sur fichiers txt;
+#X text 15 270 Connection de tous les modules via l'onglet communication
+;
+#X text 15 301 Connection entre les logs de banques et les modules
+via le toogle from TradeBot;
+#X text 375 72 Arg 1 : symbol de la banque;
+#X text 375 98 Envoi ses valeurs sur data_\$1 \, ex: data_HSBC;
+#X text 375 125 Lis un fichiers contenant de valeurs boursière;
+#X text 375 147 Renvoi la confiance et la différence de valeur avec
+la valeur précédente;
+#X obj 375 195 cnv 15 347 126 empty empty class\ tens 20 12 0 14 -233017
+-66577 0;
+#X text 378 237 arg 1 : symbol de la banque;
+#X text 378 270 arg 2 : lettre du tens;
+#X text 375 296 Envoi de l'osc via la classe udpSendTens;
+#X obj 375 328 cnv 15 347 126 empty empty class\ robot 20 12 0 14 -233017
+-66577 0;
+#X text 377 364 arg 1 : symbol de la banque;
+#X text 380 396 arg 2 : chiffre du robot;
+#X text 382 429 Envoi de l'osc via la classe udpSendRobot;
+#X restore 163 65 pd README;
+#X obj 710 512 robot HSBC 6;
+#X connect 26 0 4 0;
+#X connect 26 1 6 0;
+#X connect 26 2 8 0;
+#X connect 26 3 10 0;

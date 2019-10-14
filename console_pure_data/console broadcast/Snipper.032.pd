@@ -1,0 +1,197 @@
+#N canvas -8 15 1387 816 10;
+#X obj 8 489 cnv 15 296 90 empty empty GLOBAL\ ROBOT 101 6 0 14 -162215
+-262144 0;
+#N canvas 244 52 1023 513 osc-communication 0;
+#X obj 327 476 route received total from multicast;
+#X obj 94 494 mrpeach/unpackOSC;
+#X obj 64 151 mrpeach/packOSC;
+#X obj 58 287 mrpeach/udpsend;
+#X text 350 408 RECEPTION DONNEE DE CONFIRMATION;
+#X text 350 428 et print sur la fenetre principale pd;
+#X obj 64 130 spigot 0;
+#X msg 94 383 status;
+#X msg 142 270 disconnect;
+#X obj 430 604 unpack 0 0 0 0 0;
+#X obj 417 632 sprintf %d.%d.%d.%d:%d;
+#X obj 116 224 sel 1;
+#X obj 94 516 spigot 1;
+#X obj 94 538 print receive;
+#X obj 417 654 symbol;
+#X obj 300 100 cnv 15 300 180 empty empty COMMUNICATION 98 14 0 14
+-203904 -66577 0;
+#X obj 314 129 tgl 20 0 nos empty TENS 24 10 0 10 -4034 -1 -1 0 1;
+#X text 365 188 bytes received:;
+#X text 329 207 total bytes received:;
+#X floatatom 459 189 9 0 0 0 - received nos, f 9;
+#X floatatom 459 208 9 0 0 0 - total nos, f 9;
+#X obj 458 248 tgl 15 0 nos multicast empty 20 7 0 10 -203904 -1 -1
+0 1;
+#X symbolatom 459 227 20 0 0 0 - from nos, f 20;
+#X text 425 227 from:;
+#X text 63 39 ENVOIS DES DONNÉES;
+#X text 128 410 args: PORT + address d'écoute;
+#X obj 306 508 s received;
+#X obj 378 508 s total;
+#X obj 482 508 s multicast;
+#X text 394 248 multicast:;
+#X obj 417 676 s from;
+#X obj 319 159 tgl 15 0 empty empty isConnected 17 7 0 10 -262144 -1
+-1 0 1;
+#X obj 94 430 mmmmmrpeach/udpreceive 12345 239.0.0.57;
+#X obj 175 97 print OSC_TENS;
+#X obj 671 165 mrpeach/packOSC;
+#X obj 665 301 mrpeach/udpsend;
+#X obj 669 144 spigot 0;
+#X msg 749 284 disconnect;
+#X obj 723 238 sel 1;
+#X text 669 45 ENVOIS DES DONNÉES;
+#X obj 62 71 r SEND_OSC_TENS;
+#X obj 669 71 r SEND_OSC_ROBOT;
+#X obj 782 111 print OSC_ROBOT;
+#X obj 473 126 tgl 20 0 nos EMERGENCY ROBOT 24 10 0 10 -4034 -1 -1
+0 1;
+#X obj 478 156 tgl 15 0 empty empty isConnected 17 7 0 10 -262144 -1
+-1 0 1;
+#X text 326 35 IP broadcast sur le petit routeur pas cher : 239.0.0.56
+;
+#X text 329 60 IP broadcast sur le TPLink : 192.168.10.255;
+#X msg 723 259 connect 192.168.10.255 8888;
+#X obj 669 105 prepend send;
+#X obj 65 97 prepend send;
+#X msg 116 245 connect 192.168.10.255 12345;
+#X connect 0 0 26 0;
+#X connect 0 1 27 0;
+#X connect 0 2 9 0;
+#X connect 0 3 28 0;
+#X connect 1 0 12 0;
+#X connect 2 0 3 0;
+#X connect 3 0 31 0;
+#X connect 6 0 2 0;
+#X connect 7 0 32 0;
+#X connect 8 0 3 0;
+#X connect 9 0 10 0;
+#X connect 9 1 10 1;
+#X connect 9 2 10 2;
+#X connect 9 3 10 3;
+#X connect 9 4 10 4;
+#X connect 10 0 14 0;
+#X connect 11 0 50 0;
+#X connect 11 1 8 0;
+#X connect 12 0 13 0;
+#X connect 14 0 30 0;
+#X connect 16 0 11 0;
+#X connect 16 0 6 1;
+#X connect 32 0 1 0;
+#X connect 32 1 0 0;
+#X connect 34 0 35 0;
+#X connect 35 0 44 0;
+#X connect 36 0 34 0;
+#X connect 37 0 35 0;
+#X connect 38 0 47 0;
+#X connect 38 1 37 0;
+#X connect 40 0 49 0;
+#X connect 41 0 48 0;
+#X connect 43 0 36 1;
+#X connect 43 0 38 0;
+#X connect 47 0 35 0;
+#X connect 48 0 36 0;
+#X connect 48 0 42 0;
+#X connect 49 0 6 0;
+#X connect 49 0 33 0;
+#X connect 50 0 3 0;
+#X coords 0 -1 1 1 300 180 2 300 100;
+#X restore 11 105 pd osc-communication;
+#X obj 11 40 cnv 15 300 60 empty empty SNIPPER 20 20 0 22 -233017 -66577
+0;
+#X text 33 74 version 0.33;
+#X obj 317 41 tradebot AAPL 1000;
+#X obj 317 250 tens AAPL A;
+#X obj 512 41 TRADEBOT FB 1000;
+#X obj 512 250 tens FB B;
+#X obj 707 41 TRADEBOT HSBC 1000;
+#X obj 707 250 tens HSBC C;
+#X text 598 22 MARIO;
+#X text 405 22 GREG;
+#X text 786 21 STAN;
+#X obj 901 41 TRADEBOT GLD 1000;
+#X obj 901 250 tens GLD D;
+#X text 989 21 DAPHNE;
+#X obj 121 513 bng 54 250 50 0 robotPanic empty PANIC 12 58 0 10 -258049
+-1 -1;
+#X obj 41 513 bng 54 250 50 0 robotSortie empty SORTIE 10 56 0 10 -262144
+-1 -1;
+#X obj 7 298 cnv 15 296 90 empty empty GLOBAL\ TRADEBOT 80 6 0 14 -74899
+-245500 0;
+#X msg 317 -3 logs/AAPL_5_DAY2016_09_20.txt;
+#X obj 317 17 symbol;
+#X obj 515 17 symbol;
+#X obj 707 18 symbol;
+#X obj 901 19 symbol;
+#X msg 515 -3 logs/FB_3_DAY2016_09_20.txt;
+#X msg 707 -2 logs/HSBC_5_DAY2016_09_20.txt;
+#X msg 901 -1 logs/GLD_5_DAY2016_09_20.txt;
+#X obj 316 481 robot AAPL 5;
+#X obj 512 355 robot FB 3;
+#X obj 901 355 robot GLD 9;
+#X obj 317 355 robot AAPL 7;
+#X obj 708 355 robot HSBC 8;
+#X obj 205 513 bng 54 250 50 0 robot_sendOSC empty ACTIVE\ OSC 0 58
+0 10 -4033 -1 -1;
+#X obj 8 394 cnv 15 296 90 empty empty GLOBAL\ TENS 102 5 0 14 -116509
+-257983 0;
+#N canvas 73 143 315 327 emergency 0;
+#X obj 100 100 bng 70 250 50 0 empty empty STOP 10 35 0 20 -258113
+-257985 -262144;
+#X msg 100 187 0;
+#X obj 100 209 s EMERGENCY;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X coords 0 -1 1 1 70 70 2 100 100;
+#X restore 66 317 pd emergency;
+#N canvas 580 253 315 327 reset 0;
+#X obj 100 100 bng 70 250 50 0 empty empty reset 10 35 0 16 -232576
+-257985 -45076;
+#X msg 100 187 0;
+#X obj 100 209 s reset;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X coords 0 -1 1 1 70 70 1 100 100;
+#X restore 210 316 pd reset;
+#X obj 71 415 bng 54 250 50 0 tensPanic empty PANIC 14 60 0 10 -258049
+-1 -1;
+#N canvas 261 72 412 642 full_then_preset 0;
+#X obj 112 69 bng 18 250 50 0 empty empty empty 17 7 0 10 -4034 -1
+-1;
+#X obj 113 272 s TENS_FULL;
+#X obj 122 100 s TENS_PULSE;
+#X obj 111 44 delay 30000;
+#X obj 46 21 sel 1;
+#X obj 112 128 delay 30000;
+#X obj 112 153 bng 15 250 50 0 empty empty end 20 7 0 10 -260097 -1
+-1;
+#X msg 113 172 0;
+#X obj 100 200 cnv 15 87 58 empty empty TEST_FULL 5 12 0 14 -233017
+-66577 0;
+#X obj 110 223 tgl 30 0 empty reset empty 17 7 0 10 -4034 -1 -1 0 1
+;
+#X connect 0 0 2 0;
+#X connect 0 0 5 0;
+#X connect 3 0 0 0;
+#X connect 4 0 3 0;
+#X connect 5 0 6 0;
+#X connect 6 0 7 0;
+#X connect 7 0 9 0;
+#X connect 9 0 1 0;
+#X connect 9 0 4 0;
+#X coords 0 -1 1 1 87 59 2 100 200;
+#X restore 192 413 pd full_then_preset;
+#X obj 905 480 robot GLD 4;
+#X obj 513 482 robot FB 6;
+#X connect 19 0 20 0;
+#X connect 20 0 4 0;
+#X connect 21 0 6 0;
+#X connect 22 0 8 0;
+#X connect 23 0 13 0;
+#X connect 24 0 21 0;
+#X connect 25 0 22 0;
+#X connect 26 0 23 0;
